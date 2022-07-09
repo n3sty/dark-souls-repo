@@ -7,6 +7,7 @@ namespace JS
     public class InputHandler : MonoBehaviour
     {
         public float horizontal, vertical, moveAmount, mouseX, mouseY;
+        public bool b_Input, rollFlag;
 
         PlayerControls inputActions;
         CameraHandler cameraHandler;
@@ -29,7 +30,6 @@ namespace JS
             }
         }
 
-
         public void OnEnable()
         {
             if (inputActions == null)
@@ -50,6 +50,9 @@ namespace JS
         public void TickInput(float delta)
         {
             MoveInput(delta);
+            HandleRollInput(delta);
+
+
         }
         
         private void MoveInput(float delta)
@@ -59,6 +62,14 @@ namespace JS
             moveAmount = Mathf.Clamp01(Mathf.Abs(horizontal) + Mathf.Abs(vertical));
             mouseX = cameraInput.x;
             mouseY = cameraInput.y;
+        }
+
+        private void HandleRollInput(float delta)
+        {
+            b_Input = inputActions.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Started;
+
+            if (b_Input)
+                rollFlag = true;
         }
     }
 }

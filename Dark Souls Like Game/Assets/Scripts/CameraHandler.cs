@@ -6,6 +6,7 @@ namespace JS
 {
     public class CameraHandler : MonoBehaviour
     {
+        #region Variables
         public Transform targetTransform, cameraTransform, cameraPivotTransform;
         private Transform myTransform;
         private Vector3 cameraTransformPosition;
@@ -18,8 +19,7 @@ namespace JS
         private float targetPosition, defaultPosition, lookAngle, pivotAngle;
 
         public float cameraSphereRadius = .2f, cameraCollisionOffset = .2f, minimumCollisionOffset = .2f;
-
-
+        #endregion
 
         private void Awake()
         {
